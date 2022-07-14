@@ -1,0 +1,61 @@
+﻿title 0.4: Uuden teksti-itemin lisääminen notes-listaan
+
+Selain->Serveri: POST-request, data={ note:noteText }
+note over Serveri:
+Mikäli uuden noten luominen onnistuu serveri palauttaa statuskoodiksi 302.
+Serveri uudelleenohjaa pyynnön /notes reittiin
+end note
+Serveri --> Selain:  Html-tiedosto
+Selain -> Serveri: GET CSS
+note over Selain:
+Selain havaitsee linkin tyylitiedostoon ja lataa sen palvelimelta
+end note
+Serveri -->Selain: main.css
+Selain -> Serveri: GET JavaScript
+note over Selain:
+Selain havaitsee script tägin ja lataa siihen kuuluvan .js tiedoston
+end note
+Serveri -->Selain: main.js
+note over Selain:
+Selain suorittaa main.js:n. Koodi sisältää JSON-tiedoston hakukäskyn
+end note
+Selain -> Serveri: GET JSON
+Serveri -->Selain: data.json
+note over Selain:
+JSON parsitaan ja siitä muodostetaan ul-lista. 
+end note
+
+title 0.5: Käyttäjä menee osoitteeseen fullstack-exampleapp.herokuapp.com/spa 
+
+Selain->Serveri: GET HTML 
+Serveri-->Selain: Html-tiedosto
+note over Selain:
+Selain havaitsee linkin tyylitiedostoon ja lataa sen palvelimelta
+end note
+Selain -> Serveri: GET CSS
+Serveri -->Selain: main.css
+note over Selain:
+Selain havaitsee script tägin ja lataa siihen kuuluvan .js tiedoston
+end note
+Selain -> Serveri: GET JavaScript
+Serveri -->Selain: main.js
+note over Selain:
+Selain suorittaa main.js:n. Koodi sisältää JSON-tiedoston hakukäskyn
+end note
+Selain -> Serveri: GET JSON
+Serveri -->Selain: data.json
+note over Selain:
+JSON parsitaan ja siitä muodostetaan ul-lista, joka lisätään DOMiin
+end note
+
+
+title 0.6: Uuden teksti-itemin lisääminen SPA:n notes-listaan
+
+note over Selain:
+Lisätään uusi note note-listaan. Selain piirtää notelistan uudelleen.
+end note
+Selain->Serveri: POST-request, Content-type: application/json
+note over Serveri:
+Serveri parsii lähetetyn JSONin ja tallentaa tietokantaan.
+end note
+Serveri-->Selain: StatusCode:201 (mikäli lisäys onnistui)
